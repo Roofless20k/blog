@@ -1,6 +1,33 @@
 <?php //
 
 
+function contarTempo(string $data)  
+{
+    var_dump($data);    
+}
+
+/**
+ * formatarValor
+ * takes a number and formats it in the US currency format with 2 floats. 
+ * @param  mixed $valor
+ * @return string because it can be used to concatenate to another string to output to users.
+ */
+function formatarValor(float $valor = null): string
+{
+    return 'The formated valor  is $' . number_format($valor ? $valor : 0, 2, '.', ',');
+}
+
+/**
+ * formatarNumero
+ * takes a number and formats with 2 floats. 
+ * @param  mixed $numero
+ * @return string
+ */
+function formatarNumero(int $numero = null): string
+{
+    return number_format($numero ?: 0, 0, ".");
+}
+
 
 /**
  * saudacao
