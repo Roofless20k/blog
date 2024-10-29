@@ -1,9 +1,59 @@
-<?php //
+<?php
+
+//code to make form data permanent on the page for user ease of use
+
+//check if a var was received via post method. if not set it to ''.
+$old_input = $_POST['some_form_input'] ?? '';
+
+//inside a form input, the value would be made dinamic to receive one of the two options above
+//never forget to sanitize user data put back into the page XXS = bad
+
+/* 
+    <form method="post">
+        <input type="text" name="input1" value="<?= htmlspecialchars($old_input) ?>"/>
+        <input type="submit" />
+    </form> 
+*/
 
 
-function contarTempo(string $data)  
+//adding an escape button in a form to exit the page/relocate w/o filling in the form w/ a lil' JS
+/*  
+        //RETURN FALSE KEEPS FORM FROM SUBMITTING
+        <input type="button" value="ESCAPE" onclick="location.href='http://www.wa4e.com/'; return false;"/>
+    
+*/
+
+
+
+
+function contarTempo(string $data)
 {
-    var_dump($data);    
+    $agora = strtotime(date('Y-m-d H:i:s'));
+
+    $antes = strtotime($data);
+
+    $diferenca = $agora - $antes;
+
+    $segundos = $diferenca;
+
+    $minutos = round($segundos / 60);
+
+
+    $horas =  round($minutos / 60);
+
+
+    $dias =  round($horas / 24);
+
+
+    $semanas =  round($dias / 7);
+
+
+    $meses =  round($semanas / 4);
+
+
+    $anos =  $meses / 12;
+
+    echo $segundos, ' segundos <hr>', $minutos, ' minutos <hr>', $horas, ' horas <hr>', $dias, ' dias <hr>', $semanas, ' semanas <hr>', $meses, ' meses <hr>', $anos, ' anos <hr>';
 }
 
 /**
